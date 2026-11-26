@@ -1,0 +1,5 @@
+@import url("file:///usr/share/gnome-shell/theme/Yaru-dark/gnome-shell.css");
+#panel { background-color: #050806; border-bottom: 1px solid #00a32a; font-family: "JetBrainsMono Nerd Font"; }
+#panel .panel-button, #panel .panel-button StIcon { color: #00ff41; }
+.popup-menu-content, .quick-settings, .datemenu-popover { background-color: #0a0f0a; border: 1px solid #00a32a; color: #c8ffd4; }
+#dashtodockContainer .dash-background { border: 1px solid rgba(0,255,65,0.35); border-radius: 24px; margin-bottom: 8px; padding: 4px; }

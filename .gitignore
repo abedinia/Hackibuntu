@@ -1,0 +1,2 @@
+# full dconf dumps hold personal data (app lists, home paths)
+*.ini

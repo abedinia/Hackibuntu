@@ -1,0 +1,19 @@
+[Icon Theme]
+Name=Hacker
+Comment=Matrix-style icons on top of Papirus-Dark
+Inherits=Papirus-Dark,Yaru-dark,hicolor
+Directories=scalable/apps,scalable/actions
+
+[scalable/apps]
+Size=128
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Applications
+
+[scalable/actions]
+Size=128
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Actions

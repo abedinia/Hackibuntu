@@ -1,0 +1,22 @@
+@define-color accent_color #00ff41;
+@define-color accent_bg_color #00a32a;
+@define-color accent_fg_color #000000;
+@define-color window_bg_color #0a0f0a;
+@define-color view_bg_color #0d140d;
+@define-color headerbar_bg_color #070b07;
+@define-color sidebar_bg_color #0c120c;
+@define-color card_bg_color #111a11;
+@define-color popover_bg_color #0f170f;
+@define-color dialog_bg_color #0f170f;
+:root {
+  --accent-color: #00ff41;
+  --accent-bg-color: #00a32a;
+  --accent-fg-color: #000000;
+  --window-bg-color: #0a0f0a;
+  --view-bg-color: #0d140d;
+  --headerbar-bg-color: #070b07;
+  --sidebar-bg-color: #0c120c;
+  --card-bg-color: #111a11;
+  --popover-bg-color: #0f170f;
+  --dialog-bg-color: #0f170f;
+}
