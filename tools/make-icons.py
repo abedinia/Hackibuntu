@@ -16,6 +16,8 @@ APPS = {
     "google-chrome": '<circle cx="64" cy="64" r="36"/><ellipse cx="64" cy="64" rx="16" ry="36"/><path d="M28 64H100"/>',
     "org.gnome.Nautilus": '<path d="M28 40h26l10 10h36v42H28z"/>',
     "org.gnome.Ptyxis": '<path d="M32 42l24 22-24 22M66 88h30"/>',
+    # split panes
+    "terminator": '<path d="M28 34h72v60H28zM64 34v60M64 64h36M38 54l10 10-10 10"/>',
     "telegram": '<path d="M26 62L102 32 88 98 62 80 50 94 48 72zM48 72L102 32"/>',
     "claude-desktop": '<path d="M64 28v72M28 64h72M39 39l50 50M89 39L39 89"/>',
     "chatgpt": '<path d="M64 28l31 18v36L64 100 33 82V46z"/><circle cx="64" cy="64" r="11"/>',

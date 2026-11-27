@@ -162,6 +162,12 @@ for pair in antigravity_antigravity:antigravity Throne:throne \
   echo "  $icon"
 done
 
+# An earlier run may have made a tile for an app that is now hand-drawn; the PNG would win.
+for f in "$FILES"/icons/Hacker/scalable/apps/*.svg; do
+  old=$DATA/icons/Hacker/scalable/apps/$(basename "$f" .svg).png
+  rm -f -- "$old"
+done
+
 # Every other app: its own icon, turned green, on the same code-rain tile.
 say "Matrix tiles for the remaining apps"
 mkdir -p "$TMP/tiles"
@@ -178,6 +184,9 @@ if python3 -I "$REPO/tools/make-app-icons.py" "$TMP/tiles" > "$TMP/overrides"; t
 else
   warn "Could not make tiles for the other apps (needs python3-gi and GTK 3)."
 fi
+
+# GNOME Shell only rescans a theme when its top folder changes.
+[ ! -d "$DATA/icons/Hacker" ] || touch "$DATA/icons/Hacker"
 
 # ---- settings --------------------------------------------------------------
 say "Settings"
@@ -225,6 +234,17 @@ if [ -n "$uuid" ]; then
   setkey "/org/gnome/Ptyxis/Profiles/$uuid/opacity" 0.85
 else
   warn "Terminal colors and transparency skipped: open Ptyxis once, then run install.sh again."
+fi
+
+if command -v terminator >/dev/null; then
+  term=$CONFIG/terminator/config
+  : > "$TMP/terminator"
+  [ ! -f "$term" ] || cp "$term" "$TMP/terminator"
+  if python3 -I "$REPO/tools/set-terminator-theme.py" "$FILES/hacker.palette" "$TMP/terminator"; then
+    put "$TMP/terminator" "$term"
+  else
+    warn "Terminator colors and transparency skipped: could not edit $term."
+  fi
 fi
 
 # ---- zsh prompt ------------------------------------------------------------

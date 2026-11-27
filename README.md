@@ -30,7 +30,7 @@ Use `./install.sh --no-shell` to leave your shell setup alone.
 - Floating bottom dock with green running dots
 - Black and green top bar and menus (User Themes extension)
 - Matrix code-rain wallpaper
-- "Hacker" terminal palette, slightly see-through background, JetBrainsMono Nerd Font
+- "Hacker" terminal palette, slightly see-through background, JetBrainsMono Nerd Font, in Ptyxis and in Terminator (if installed)
 - zsh with Oh My Zsh, autosuggestions, syntax highlighting and a Starship prompt
 - Launcher overrides for apps that name an icon file instead of an icon name (snaps, Zed and others)
 
