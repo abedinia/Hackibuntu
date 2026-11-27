@@ -25,14 +25,14 @@ Use `./install.sh --no-shell` to leave your shell setup alone.
 
 ## What you get
 
-- Matrix-style code-rain icons for the apps listed in `tools/make-icons.py`; everything else uses Papirus-Dark with green folders
+- Matrix-style code-rain icons: hand-drawn glyphs for the apps in `tools/make-icons.py`, and for every other app its own icon turned green on the same tile (`tools/make-app-icons.py`). Folders and file types use Papirus-Dark with green folders. Run `./install.sh` again after installing new apps
 - Dark olive/green GTK colors
 - Floating bottom dock with green running dots
 - Black and green top bar and menus (User Themes extension)
 - Matrix code-rain wallpaper
 - "Hacker" terminal palette, slightly see-through background, JetBrainsMono Nerd Font
 - zsh with Oh My Zsh, autosuggestions, syntax highlighting and a Starship prompt
-- Launcher overrides so Telegram, LocalSend, DBeaver, Bitwarden, Antigravity and Throne use those icons, if installed
+- Launcher overrides for apps that name an icon file instead of an icon name (snaps, Zed and others)
 
 Pinned dock apps are left as they are. Everything goes into your home folder.
 

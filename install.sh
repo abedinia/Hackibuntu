@@ -147,7 +147,10 @@ done < <(cd "$FILES/icons/Hacker" && find . -type f -printf '%P\n')
 # Apps whose launcher names an icon file or another theme's icon.
 for pair in antigravity_antigravity:antigravity Throne:throne \
              telegram-desktop_telegram-desktop:telegram localsend_localsend:localsend \
-            dbeaver-ce_dbeaver-ce:dbeaver bitwarden_bitwarden:bitwarden; do
+            dbeaver-ce_dbeaver-ce:dbeaver bitwarden_bitwarden:bitwarden \
+            code_code:vscode antigravity-ide-snap_antigravity-ide:antigravity \
+            teams-for-linux_teams-for-linux:teams-for-linux dev.zed.Zed-Preview:zed \
+            waveterm_waveterm:waveterm termius-app_termius-app:termius; do
   app=${pair%:*}.desktop
   icon=${pair#*:}
   src=$DATA/applications/$app
@@ -158,6 +161,23 @@ for pair in antigravity_antigravity:antigravity Throne:throne \
   put "$TMP/$app" "$DATA/applications/$app"
   echo "  $icon"
 done
+
+# Every other app: its own icon, turned green, on the same code-rain tile.
+say "Matrix tiles for the remaining apps"
+mkdir -p "$TMP/tiles"
+if python3 -I "$REPO/tools/make-app-icons.py" "$TMP/tiles" > "$TMP/overrides"; then
+  for f in "$TMP"/tiles/*.png; do
+    [ -e "$f" ] || continue
+    put "$f" "$DATA/icons/Hacker/scalable/apps/${f##*/}"
+  done
+  # launchers that name an icon file need to name the tile instead
+  while IFS=$'\t' read -r src app icon; do
+    sed "s|^Icon=.*|Icon=$icon|" "$src" > "$TMP/$app"
+    put "$TMP/$app" "$DATA/applications/$app"
+  done < "$TMP/overrides"
+else
+  warn "Could not make tiles for the other apps (needs python3-gi and GTK 3)."
+fi
 
 # ---- settings --------------------------------------------------------------
 say "Settings"

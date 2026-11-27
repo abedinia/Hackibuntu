@@ -26,6 +26,10 @@ APPS = {
     "bitwarden": '<path d="M64 28l32 12v24c0 18-14 30-32 38-18-8-32-20-32-38V40z"/><path d="M64 56v20"/><circle cx="64" cy="56" r="6"/>',
     "throne": '<path d="M30 90l-4-46 22 18 16-30 16 30 22-18-4 46z"/>',
     "anydesk": '<path d="M30 44h60M76 30l16 14-16 14M98 84H38M52 70L36 84l16 14"/>',
+    "teams-for-linux": '<path d="M36 38h56M64 38v56"/><circle cx="96" cy="72" r="10"/><circle cx="32" cy="72" r="10"/>',
+    "zed": '<path d="M36 36h56L36 92h56"/>',
+    "waveterm": '<path d="M26 52q19-22 38 0t38 0M26 80q19-22 38 0t38 0"/>',
+    "termius": '<path d="M30 34h68v60H30zM44 50l14 14-14 14M66 80h18"/>',
     # dock trash, empty and full
     "user-trash": '<path d="M34 42h60M52 42V30h24v12M42 42l5 56h34l5-56M54 56v28M74 56v28"/>',
     "user-trash-full": '<path d="M34 42h60M52 42V30h24v12M42 42l5 56h34l5-56M54 56v28M74 56v28M34 30l6-10 8 8M80 28l4-10 11 5"/>',
@@ -62,16 +66,23 @@ def icon(name, glyph):
             'stroke-opacity="0.55" stroke-width="3"/></svg>\n')
 
 
-apps, actions = OUT / "scalable/apps", OUT / "scalable/actions"
-apps.mkdir(parents=True, exist_ok=True)
-actions.mkdir(parents=True, exist_ok=True)
-for name, glyph in APPS.items():
-    (apps / f"{name}.svg").write_text(icon(name, glyph))
+def main():
+    apps, actions = OUT / "scalable/apps", OUT / "scalable/actions"
+    apps.mkdir(parents=True, exist_ok=True)
+    actions.mkdir(parents=True, exist_ok=True)
+    for name, glyph in APPS.items():
+        (apps / f"{name}.svg").write_text(icon(name, glyph))
 
-# The dock's "Show Apps" button. A PNG, because GNOME repaints *-symbolic.svg
-# files in one flat color, which would lose the tile and the rain.
-grid = "".join(f'<path d="M{x} {y}h12v12h-12z"/>' for y in (33, 58, 83) for x in (33, 58, 83))
-name = "view-app-grid-ubuntu-symbolic"
-data = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(icon(name, grid).encode()))
-GdkPixbuf.Pixbuf.new_from_stream_at_scale(data, 256, 256, True, None).savev(
-    str(actions / f"{name}.png"), "png", [], [])
+    # The dock's "Show Apps" button. A PNG, because GNOME repaints *-symbolic.svg
+    # files in one flat color, which would lose the tile and the rain.
+    grid = "".join(f'<path d="M{x} {y}h12v12h-12z"/>' for y in (33, 58, 83) for x in (33, 58, 83))
+    name = "view-app-grid-ubuntu-symbolic"
+    data = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(icon(name, grid).encode()))
+    GdkPixbuf.Pixbuf.new_from_stream_at_scale(data, 256, 256, True, None).savev(
+        str(actions / f"{name}.png"), "png", [], [])
+    # same drawing as localsend, under the name the other LocalSend package uses
+    (apps / "org.localsend.localsend_app.svg").write_text(icon("localsend", APPS["localsend"]))
+
+
+if __name__ == "__main__":
+    main()
