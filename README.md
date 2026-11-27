@@ -30,6 +30,7 @@ Use `./install.sh --no-shell` to leave your shell setup alone.
 - Floating bottom dock with green running dots
 - Black and green top bar and menus (User Themes extension)
 - Matrix code-rain wallpaper
+- Lock screen with animated code rain, a glowing clock and a green password box (its own small extension, GNOME 50 only). The login screen shown after boot is separate, see below
 - "Hacker" terminal palette, slightly see-through background, JetBrainsMono Nerd Font, in Ptyxis and in Terminator (if installed)
 - zsh with Oh My Zsh, autosuggestions, syntax highlighting and a Starship prompt
 - Launcher overrides for apps that name an icon file instead of an icon name (snaps, Zed and others)
@@ -45,3 +46,7 @@ The installer downloads icons from Ubuntu's archive, and fonts, Oh My Zsh, plugi
 ```
 
 Your earlier settings and any replaced files are saved in `~/.local/share/hackibuntu/`.
+
+## Login screen
+
+`sudo ./install-login.sh` puts the code-rain wallpaper and a green accent on the login screen. The rain there is a still picture, and the clock and password box keep Ubuntu's shape. It affects every user of the computer. Undo with `sudo ./install-login.sh --undo`; `./uninstall.sh` does not remove it.

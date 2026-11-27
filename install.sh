@@ -73,6 +73,16 @@ setkey() { # dconf-path gvariant-value
   dconf write "$1" "$2"
 }
 
+enable_ext() { # uuid
+  local enabled
+  enabled=$(gsettings get org.gnome.shell enabled-extensions)
+  case $enabled in
+    *"'$1'"*) ;;
+    *"[]") setkey /org/gnome/shell/enabled-extensions "['$1']" ;;
+    *) setkey /org/gnome/shell/enabled-extensions "${enabled%]}, '$1']" ;;
+  esac
+}
+
 # ---- icons and the user-theme extension ------------------------------------
 apt_unpack() { # package
   (cd "$TMP" && apt-get download "$1" >/dev/null) ||
@@ -218,12 +228,7 @@ setkey $B/picture-uri "'file://$HOME/Pictures/hacker-wallpaper.png'"
 setkey $B/picture-uri-dark "'file://$HOME/Pictures/hacker-wallpaper.png'"
 setkey $B/picture-options "'zoom'"
 
-enabled=$(gsettings get org.gnome.shell enabled-extensions)
-case $enabled in
-  *"'$EXT'"*) ;;
-  *"[]") setkey /org/gnome/shell/enabled-extensions "['$EXT']" ;;
-  *) setkey /org/gnome/shell/enabled-extensions "${enabled%]}, '$EXT']" ;;
-esac
+enable_ext "$EXT"
 setkey /org/gnome/shell/extensions/user-theme/name "'HackerShell'"
 [ "$(gsettings get org.gnome.shell disable-user-extensions)" = false ] ||
   warn "Extensions are switched off. Turn them on in the Extensions app."
@@ -246,6 +251,18 @@ if command -v terminator >/dev/null; then
     warn "Terminator colors and transparency skipped: could not edit $term."
   fi
 fi
+
+# ---- lock screen -----------------------------------------------------------
+# A second extension: GNOME turns User Themes off while the screen is locked.
+say "Matrix lock screen"
+LOCK=hacker-lock@hackibuntu
+# track the folder too, so uninstall.sh leaves nothing behind
+[ -d "$DATA/gnome-shell/extensions/$LOCK" ] || track "$DATA/gnome-shell/extensions/$LOCK"
+for f in metadata.json extension.js stylesheet.css; do
+  put "$FILES/extensions/$LOCK/$f" "$DATA/gnome-shell/extensions/$LOCK/$f"
+done
+enable_ext "$LOCK"
+[ "$GNOME" = 50 ] || warn "The lock screen extension only loads on GNOME 50."
 
 # ---- zsh prompt ------------------------------------------------------------
 clone_once() { # url destination

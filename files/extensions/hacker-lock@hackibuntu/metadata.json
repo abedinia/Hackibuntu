@@ -1,0 +1,7 @@
+{
+  "uuid": "hacker-lock@hackibuntu",
+  "name": "Hacker Lock Screen",
+  "description": "Matrix code rain and a green-on-black style for the lock screen.",
+  "shell-version": ["50"],
+  "session-modes": ["unlock-dialog"]
+}

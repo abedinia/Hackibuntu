@@ -1,0 +1,72 @@
+/* Loaded only while the screen is locked. */
+.unlock-dialog { color: #c8ffd4; font-family: "JetBrainsMono Nerd Font"; }
+
+.unlock-dialog-clock .unlock-dialog-clock-time {
+  color: #39ff6a;
+  font-size: 7.5em;
+  text-shadow: 0 0 18px rgba(0, 255, 65, 0.8);
+}
+.unlock-dialog-clock .unlock-dialog-clock-date {
+  color: #c8ffd4;
+  background-color: rgba(3, 6, 3, 0.85);
+  border: 1px solid #00a32a;
+  border-radius: 4px;
+  padding: 6px 18px;
+}
+.unlock-dialog-clock .unlock-dialog-clock-hint { color: #00a32a; }
+
+.unlock-dialog .user-widget .user-widget-label { color: #39ff6a; }
+.unlock-dialog .user-widget .user-icon {
+  background-color: #030603;
+  color: #00ff41;
+  border: 2px solid #00ff41;
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.5);
+}
+
+.unlock-dialog .login-dialog-prompt-entry {
+  color: #39ff6a;
+  caret-color: #00ff41;
+  background-color: rgba(3, 6, 3, 0.9);
+  border: 1px solid #00a32a;
+  border-radius: 4px;
+  selection-background-color: #00a32a;
+}
+.unlock-dialog .login-dialog-prompt-entry:focus {
+  border: 1px solid #00ff41;
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.55);
+}
+
+/* Yaru names each button with two classes, so these must do the same to win. */
+.unlock-dialog .login-dialog-button.cancel-button,
+.unlock-dialog .login-dialog-button.switch-user-button,
+.unlock-dialog .login-dialog-button.login-dialog-auth-menu-button,
+.unlock-dialog .login-dialog-button.a11y-button,
+.unlock-dialog .login-dialog-button.web-login-intro-button,
+.unlock-dialog .login-dialog-button.login-dialog-session-list-button {
+  color: #00ff41;
+  background-color: rgba(3, 6, 3, 0.9);
+  border: 1px solid #00a32a;
+}
+.unlock-dialog .login-dialog-button.cancel-button:hover,
+.unlock-dialog .login-dialog-button.switch-user-button:hover,
+.unlock-dialog .login-dialog-button.login-dialog-auth-menu-button:hover,
+.unlock-dialog .login-dialog-button.a11y-button:hover,
+.unlock-dialog .login-dialog-button.web-login-intro-button:hover,
+.unlock-dialog .login-dialog-button.login-dialog-session-list-button:hover,
+.unlock-dialog .login-dialog-button.cancel-button:focus,
+.unlock-dialog .login-dialog-button.switch-user-button:focus,
+.unlock-dialog .login-dialog-button.login-dialog-auth-menu-button:focus,
+.unlock-dialog .login-dialog-button.a11y-button:focus,
+.unlock-dialog .login-dialog-button.web-login-intro-button:focus,
+.unlock-dialog .login-dialog-button.login-dialog-session-list-button:focus {
+  color: #39ff6a;
+  background-color: #0d2412;
+  border-color: #00ff41;
+}
+
+.unlock-dialog-notifications-container .message,
+.unlock-dialog-notifications-container .unlock-dialog-notification-source {
+  background-color: rgba(3, 6, 3, 0.9);
+  border: 1px solid #00a32a;
+  color: #c8ffd4;
+}
